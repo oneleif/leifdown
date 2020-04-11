@@ -1,0 +1,10 @@
+.edit-mode-container {
+    display: flex;
+    flex-direction: column;
+    
+    & .button-module {
+        display: flex;
+        flex-direction: row;
+        align-self: flex-start;
+    }
+}
