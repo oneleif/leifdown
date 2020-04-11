@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function EditView({onValueChange, ...rest}) {
+export default function EditView({ onValueChange, ...rest }) {
   /************************************
    * Render
    ************************************/ 
