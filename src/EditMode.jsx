@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './App.scss';
+
 import EditView from './EditView';
 import DisplayView from './DisplayView';
 
@@ -9,7 +11,7 @@ import DisplayView from './DisplayView';
 const EDIT_VIEW = 'EDIT';
 const DISPLAY_VIEW = 'DISPLAY';
 
-export default function EditMode() {
+export default function EditMode({width = '100%', height = '500px'}) {
   /************************************
    * State
    ************************************/
@@ -19,11 +21,13 @@ export default function EditMode() {
   /************************************
    * Render
    ************************************/ 
-  
+
   return (
-    <div>
-        <button onClick={() => {setView(EDIT_VIEW)}}>Edit</button>
-        <button onClick={() => {setView(DISPLAY_VIEW)}}>Preview</button>
+    <div className='edit-mode-container' style={{width: width, height: height}}>
+        <div className='button-module'>
+            <button onClick={() => {setView(EDIT_VIEW)}}>Edit</button>
+            <button onClick={() => {setView(DISPLAY_VIEW)}}>Preview</button>
+        </div>
         { view === EDIT_VIEW ? <EditView /> : <DisplayView /> }
     </div>
   );
