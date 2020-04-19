@@ -17,6 +17,17 @@ export default function EditMode({width = '100%', height = '500px'}) {
    ************************************/
 
   const [view, setView] = useState(EDIT_VIEW);
+  const [plainText, setPlainText] = useState('');
+  const [parseText, setParseText] = useState('');
+
+  function handleValueChange(value) {
+    setPlainText(value);
+  }
+
+  function handlePreviewClicked() {
+    setView(DISPLAY_VIEW);
+    setParseText(plainText)
+  }
 
   /************************************
    * Render
@@ -26,9 +37,9 @@ export default function EditMode({width = '100%', height = '500px'}) {
     <div className='edit-mode-container' style={{width: width, height: height}}>
       <div className='button-module'>
         <button onClick={() => setView(EDIT_VIEW)}>Edit</button>
-        <button onClick={() => setView(DISPLAY_VIEW)}>Preview</button>
+        <button onClick={handlePreviewClicked}>Preview</button>
       </div>
-      { view === EDIT_VIEW ? <EditView /> : <DisplayView>{/* TODO: Parsed Markdown Goes Here */}</DisplayView> }
+      { view === EDIT_VIEW ? <EditView text={parseText} onValueChange={handleValueChange}/> : <DisplayView text={parseText} /> }
     </div>
   );
 }

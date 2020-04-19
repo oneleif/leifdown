@@ -1,13 +1,17 @@
 import React from 'react';
 
-export default function DisplayView({ width = '100%', children }) {
+import { useParser } from './useParser';
+
+export default function DisplayView({ text, width = '100%' }) {
+  const body = useParser(text);
+
   /************************************
    * Render
    ************************************/ 
 
   return (
     <div style={{width: width}}> 
-      {children ? children : <p>Nothing to Display.</p>}
+      {body}
     </div>
   );
 }
